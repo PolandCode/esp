@@ -3,7 +3,7 @@ if (not game.IsLoaded(game)) then
     game.Loaded.Wait(game.Loaded);
 end
 
-local Drawing = Drawing or loadstring(game.HttpGet(game, "https://raw.githubusercontent.com/fatesc/Roblox-Drawing-Lib/main/main.lua"))();
+local Drawing = Drawing or loadstring(game.HttpGet(game, "https://raw.githubusercontent.com/PolandCode/lib/main/.lua"))();
 
 local GetService = game.GetService
 local RunService = GetService(game, "RunService");
@@ -353,7 +353,7 @@ local Drawings = {}
 local Window
 
 local Load = function()
-    local Settings = JSONDecode(HttpService, readfile("fates-esp.json"));
+    local Settings = JSONDecode(HttpService, readfile("Ex1's-esp.json"));
     local NewSettings = {}
     for i, v in next, Settings do
         NewSettings[i] = v
@@ -374,7 +374,7 @@ local Load = function()
     return NewSettings
 end
 
-local Settings = isfile("fates-esp.json") and Load() or {
+local Settings = isfile("Ex1's-esp.json") and Load() or {
     TracerOptions = {
         Enabled = true,
         To = "Head",
@@ -438,7 +438,7 @@ local Save = function()
                 end
             end
         end
-        writefile("fates-esp.json", JSONEncode(HttpService, NewSettings));
+        writefile("Ex1's-esp.json", JSONEncode(HttpService, NewSettings));
         print("saved");
         Settings = Load();
         TracerOptions, EspOptions, AimbotOptions, UIOptions = Settings.TracerOptions, Settings.EspOptions, Settings.AimbotOptions, Settings.UIOptions
@@ -799,9 +799,9 @@ local Render = RunService.RenderStepped.Connect(RunService.RenderStepped, functi
     end
 end)
 
-local UILibrary = --[[loadfile("uilib.txt")()]]loadstring(game.HttpGet(game, "https://raw.githubusercontent.com/fatesc/fates-esp/main/ui.lua"))();
+local UILibrary = --[[loadfile("uilib.txt")()]]loadstring(game.HttpGet(game, "https://raw.githubusercontent.com/fatssc/fates-esp/main/ui.lua"))();
 local UI = UILibrary.new(Color3fromRGB(255, 79, 87))
-Window = UI:LoadWindow('<font color="#ff4f57">fates</font> esp', UDim2.fromOffset(400, 279));
+Window = UI:LoadWindow('<font color="#ff4f57">Ex1s</font> esp', UDim2.fromOffset(400, 279));
 local ESP = Window.NewPage("esp")
 local AIMBOT = Window.NewPage("aimbot")
 local AimbotSection = AIMBOT.NewSection("Aimbot");
@@ -957,7 +957,7 @@ ConfigSection.Toggle("Enable Snaplines", AimbotOptions.Snaplines, function(Callb
     AimbotOptions.Snaplines = Callback
 end)
 
-if (not isfile("fates-esp.json")) then
+if (not isfile("Ex1s-esp.json")) then
     Save();
 end
 
